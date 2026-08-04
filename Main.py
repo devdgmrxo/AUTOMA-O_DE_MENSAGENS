@@ -10,16 +10,22 @@ options.add_argument('--user-agent=Mozila/0.5 (Windows NT 10.0; Win64; x64) Appl
 navegador = uc.Chrome(options=options, version_main=150)
 url = "https://www.flightradar24.com/airport/fln/arrivals"
 
+print('='*30)
+print(f'{"PROGRAMA INICIADO":^30}')
+print('='*30)
+
 navegador.get(url)
 
 time.sleep(8)
-
-
 
 try:
 
     fechar_termos = navegador.find_element(By.XPATH, '//*[contains(text(), "Agree and close")]')
     fechar_termos.click()
+    print('='*30)
+    print(f'{"TERMOS ACEITOS ✅":^30}')
+    print('='*30)
+    
 except Exception:
     pass
 
@@ -29,7 +35,9 @@ try:
 
     fechar_whats_new = navegador.find_element(By.XPATH, '//button[.//span[contains(text(), "Close")]]')
     fechar_whats_new.click()
-
+    print('='*30)
+    print(f'{"POP-UP FECHADO ✅":^30}')
+    print('='*30)
 except Exception:
     pass
 
@@ -107,7 +115,7 @@ for voo in voos_live:
 ℹ️ Prefixo: {prefixo}"""
 
         print(briefing)
-        print("\n" + "=" * 40 + "\n")
+        print("\n" + "=" * 30 + "\n")
     except Exception as e:
         print(f"Erro ao capturar dados do voo: {e}")
 
